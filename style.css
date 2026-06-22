@@ -1,0 +1,302 @@
+/* =========================
+   GLOBAL
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+
+    background: linear-gradient(
+        135deg,
+        #141e30,
+        #243b55,
+        #4b134f
+    );
+
+    background-size: 400% 400%;
+    animation: bg 10s ease infinite;
+}
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes bg {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* =========================
+   START SCREEN
+========================= */
+
+#startScreen {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 99;
+
+    background: inherit;
+}
+
+.start-title,
+.title {
+    font-family: Orbitron, sans-serif;
+    color: #ffffff;
+
+    text-shadow:
+        0 0 15px #ff4fd8,
+        0 0 25px #00e5ff;
+}
+
+.start-title {
+    font-size: 64px;
+}
+
+.subtitle {
+    color: #ffffff;
+    margin: 15px 0;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.start-btn,
+.player-btn,
+.bot-btn,
+.reset-btn,
+.popup button {
+    border: none;
+    border-radius: 15px;
+
+    padding: 12px 22px;
+
+    cursor: pointer;
+    font-weight: bold;
+
+    transition: 0.3s ease;
+}
+
+.start-btn,
+.player-btn {
+    background: linear-gradient(
+        45deg,
+        #00dbde,
+        #fc00ff
+    );
+
+    color: #ffffff;
+}
+
+.bot-btn {
+    background: linear-gradient(
+        45deg,
+        #f7971e,
+        #ffd200
+    );
+}
+
+.reset-btn {
+    margin-top: 20px;
+
+    background: linear-gradient(
+        45deg,
+        #ff416c,
+        #ff4b2b
+    );
+
+    color: #ffffff;
+}
+
+.start-btn:hover,
+.player-btn:hover,
+.bot-btn:hover,
+.reset-btn:hover {
+    transform: translateY(-3px);
+}
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+
+.container {
+    display: none;
+
+    width: 430px;
+    padding: 30px;
+
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(18px);
+
+    text-align: center;
+}
+
+/* =========================
+   SCOREBOARD
+========================= */
+
+.scoreboard {
+    display: flex;
+    justify-content: space-between;
+
+    margin: 15px 0;
+
+    color: #ffffff;
+}
+
+/* =========================
+   STATUS BOX
+========================= */
+
+.status-box {
+    margin-bottom: 20px;
+    padding: 15px;
+
+    border-radius: 15px;
+
+    background: rgba(255, 255, 255, 0.1);
+
+    color: #ffffff;
+}
+
+/* =========================
+   GAME BOARD
+========================= */
+
+.board {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 12px;
+}
+
+/* =========================
+   CELL
+========================= */
+
+.cell {
+    width: 110px;
+    height: 110px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.12);
+
+    color: #ffffff;
+    font-size: 50px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.cell:hover {
+    transform: scale(1.05);
+}
+
+/* =========================
+   BOARD DISABLED STATE
+========================= */
+
+.board.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+/* =========================
+   WINNING LINE
+========================= */
+
+#winning-line {
+    position: absolute;
+
+    height: 6px;
+
+    background: #ffffff;
+
+    display: none;
+}
+
+/* =========================
+   POPUP
+========================= */
+
+.popup {
+    position: fixed;
+    inset: 0;
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.popup-content {
+    padding: 30px;
+
+    border-radius: 20px;
+
+    background: #ffffff;
+
+    text-align: center;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 500px) {
+
+    .container {
+        width: 100%;
+    }
+
+    .cell {
+        width: 90px;
+        height: 90px;
+
+        font-size: 40px;
+    }
+
+    .player-btn,
+    .bot-btn,
+    .reset-btn {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
